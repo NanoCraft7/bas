@@ -1,17 +1,16 @@
 <?php
 require_once 'classes/userclass.php';
 
-
-    if (isset($_POST["submit"])) {
+    if(isset($_POST["submit"])) {
         $user = new UserClass();
-        
+
         // Gegevens van het nieuwe klantformulier
         $klantnaam = $_POST['klantnaam'];
         $klantEmail = $_POST['klantEmail'];
         $klantAdres = $_POST['klantAdres'];
         $klantPostcode = $_POST['klantPostcode'];
         $klantWoonplaats = $_POST['klantWoonplaats'];
-        
+
         // Toevoegen van een nieuwe klant met behulp van de UserClass
         $user->addUser($klantnaam, $klantEmail, $klantAdres, $klantPostcode, $klantWoonplaats);
 
@@ -19,7 +18,6 @@ require_once 'classes/userclass.php';
     } else {
         echo "Niet alle vereiste velden zijn ingevuld.";
     }
-}
 ?>
 
 

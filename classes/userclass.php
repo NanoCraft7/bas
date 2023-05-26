@@ -3,7 +3,7 @@
 class User
 {
     private $db;
-// aaa
+
     public function __construct()
     {
         require_once 'database.php';

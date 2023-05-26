@@ -1,7 +1,7 @@
 <?php
-require 'db.php';
+require_once 'classes/userclass.php';
 
-$db = new Database();
+$user = new UserClass();
 
 // Gegevens van het nieuwe klantformulier
 $klantnaam = $_POST['klantnaam'];
@@ -10,16 +10,10 @@ $klantAdres = $_POST['klantAdres'];
 $klantPostcode = $_POST['klantPostcode'];
 $klantWoonplaats = $_POST['klantWoonplaats'];
 
-// Query voor het toevoegen van een nieuwe klant
-$query = "INSERT INTO klanten (klantnaam, klantEmail, klantAdres, klantPostcode, klantWoonplaats) 
-          VALUES (?, ?, ?, ?, ?)";
-
-// Parameters voor de query
-$params = array($klantnaam, $klantEmail, $klantAdres, $klantPostcode, $klantWoonplaats);
-
-// Uitvoeren van de query
-$db->executeQuery($query, $params);
+// Toevoegen van een nieuwe klant met behulp van de UserClass
+$user->addUser($klantnaam, $klantEmail, $klantAdres, $klantPostcode, $klantWoonplaats);
 ?>
+
 
 <!-- HTML-formulier om een nieuwe klant toe te voegen -->
 <form method="POST" action="">

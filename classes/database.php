@@ -10,7 +10,7 @@ class Database
         $username = "root";
         $password = "";
         $dbname = "bas";
-        
+
         $dsn = "mysql:host=$host;dbname=$dbname";
         $this->connection = new PDO($dsn, $username, $password);
         $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

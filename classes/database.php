@@ -2,29 +2,30 @@
 
 class Database
 {
-    private $connection;
+    private $host = 'localhost';
+    private $dbname = 'bas';
+    private $username = 'root';
+    private $password = '';
+    private $conn;
 
     public function __construct()
     {
-        $host = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "bas";
-
-        $dsn = "mysql:host=$host;dbname=$dbname";
-        $this->connection = new PDO($dsn, $username, $password);
-        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        try {
+            $this->conn = new PDO("mysql:host={$this->host};dbname={$this->dbname}", $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo 'Connection failed: ' . $e->getMessage();
+        }
     }
 
-    public function executeQuery($query, $params = [])
+    public function execute($query, $params = [])
     {
         try {
-            $statement = $this->connection->prepare($query);
-            $statement->execute($params);
-            return $statement;
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($params);
+            return $stmt;
         } catch (PDOException $e) {
-            echo "Query execution failed: " . $e->getMessage();
-            return false;
+            echo 'Error: ' . $e->getMessage();
         }
     }
 }

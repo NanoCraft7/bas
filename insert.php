@@ -1,25 +1,24 @@
 <?php
 require_once 'classes/userclass.php';
 
-    if(isset($_POST["submit"])) {
-        $user = new UserClass();
+if (isset($_POST["submit"])) {
+    // Ontvang de formuliervelden
+    $klantnaam = $_POST['klantnaam'];
+    $klantEmail = $_POST['klantEmail'];
+    $klantAdres = $_POST['klantAdres'];
+    $klantPostcode = $_POST['klantPostcode'];
+    $klantWoonplaats = $_POST['klantWoonplaats'];
 
-        // Gegevens van het nieuwe klantformulier
-        $klantnaam = $_POST['klantnaam'];
-        $klantEmail = $_POST['klantEmail'];
-        $klantAdres = $_POST['klantAdres'];
-        $klantPostcode = $_POST['klantPostcode'];
-        $klantWoonplaats = $_POST['klantWoonplaats'];
+    // Maak een nieuwe User-object aan
+    $user = new User();
 
-        // Toevoegen van een nieuwe klant met behulp van de UserClass
-        $user->addUser($klantnaam, $klantEmail, $klantAdres, $klantPostcode, $klantWoonplaats);
+    // Voeg de gebruiker toe aan de database
+    $user->addUser($klantnaam, $klantEmail, $klantAdres, $klantPostcode, $klantWoonplaats);
 
-        echo "De klant is succesvol toegevoegd aan de database.";
-    } else {
-        echo "Niet alle vereiste velden zijn ingevuld.";
-    }
+    // Bevestiging bericht
+    echo "De klant is succesvol toegevoegd aan de database.";
+}
 ?>
-
 
 <!-- HTML-formulier om een nieuwe klant toe te voegen -->
 <!DOCTYPE html>
@@ -29,7 +28,7 @@ require_once 'classes/userclass.php';
     </head>
     <body>
         <h1>Nieuwe klant toevoegen</h1>
-        <form method="POST" action="insert.php">
+        <form method="POST" action="">
             <label for="klantnaam">Klantnaam:</label>
             <input type="text" id="klantnaam" name="klantnaam" required><br>
 
@@ -45,7 +44,7 @@ require_once 'classes/userclass.php';
             <label for="klantWoonplaats">Woonplaats:</label>
             <input type="text" id="klantWoonplaats" name="klantWoonplaats" required><br>
 
-            <input type="submit" value="Toevoegen">
+            <input type="submit" name="submit" value="Toevoegen">
         </form>
     </body>
 </html>

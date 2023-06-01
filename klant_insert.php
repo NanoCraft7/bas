@@ -9,15 +9,34 @@ if (isset($_POST["submit"])) {
     $klantPostcode = $_POST['klantPostcode'];
     $klantWoonplaats = $_POST['klantWoonplaats'];
 
+    // Valideer de klantnaam
+    if (strlen($klantnaam) < 3) {
+        echo "De klantnaam moet minimaal 3 karakters bevatten.";
+        exit();
+    }
+
     // Maak een nieuwe User-object aan
     $user = new User();
 
-    // Voeg de gebruiker toe aan de database
-    $user->addUser($klantnaam, $klantEmail, $klantAdres, $klantPostcode, $klantWoonplaats);
+    // Stel de gebruikersgegevens in
+    $user->setKlantnaam($klantnaam);
+    $user->setKlantEmail($klantEmail);
+    $user->setKlantAdres($klantAdres);
+    $user->setKlantPostcode($klantPostcode);
+    $user->setKlantWoonplaats($klantWoonplaats);
 
-    // Bevestiging bericht
-    echo "De klant is succesvol toegevoegd aan de database.";
+    // Voeg de gebruiker toe aan de database
+    $result = $user->addUser();
+
+    if ($result) {
+        // Bevestiging bericht
+        echo "De klant is succesvol toegevoegd aan de database.";
+    } else {
+        // Foutbericht als er een dubbele klant is gevonden
+        echo "Er bestaat al een klant met dezelfde naam in de database.";
+    }
 }
+
 ?>
 
 <!-- HTML-formulier om een nieuwe klant toe te voegen -->

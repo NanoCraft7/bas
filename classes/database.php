@@ -28,5 +28,16 @@ class Database
             echo 'Error: ' . $e->getMessage();
         }
     }
+
+    public function fetchAll($query)
+    {
+        try {
+            $stmt = $this->conn->query($query);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
 }
+
 ?>

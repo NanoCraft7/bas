@@ -44,6 +44,7 @@ if (isset($_POST["submit"])) {
 <html>
     <head>
         <title>Nieuwe klant toevoegen</title>
+        <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
     </head>
     <body>
         <h1>Nieuwe klant toevoegen</h1>
@@ -65,5 +66,6 @@ if (isset($_POST["submit"])) {
 
             <input type="submit" name="submit" value="Toevoegen">
         </form>
+        <a href="index.php" class="back-btn">Terug naar hoofdmenu</a>
     </body>
 </html>

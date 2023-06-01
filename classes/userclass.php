@@ -119,5 +119,12 @@ class Verkooporder
         $values = array($this->klantId, $this->artId, $this->verkOrdDatum, $this->verkOrdStatus, $this->verkOrdBestAantal);
         $this->db->execute($query, $values);
     }
+
+    // Haal de lijst met verkooporders op
+    public function getVerkooporders()
+    {
+        $query = "SELECT * FROM verkooporders";
+        return $this->db->fetchAll($query);
+    }
 }
 ?>

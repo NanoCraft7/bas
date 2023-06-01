@@ -38,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html>
 <head>
     <title>Verkooporder aanmaken</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
 </head>
 <body>
     <h2>Verkooporder aanmaken</h2>
@@ -67,5 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <br><br>
         <input type="submit" name="submit" value="Toevoegen">
     </form>
+    <a href="index.php" class="back-btn">Terug naar hoofdmenu</a>
 </body>
 </html>

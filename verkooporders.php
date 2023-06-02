@@ -1,6 +1,7 @@
 <?php
 
 require_once 'classes/userclass.php';
+require_once 'classes/verkorderclass.php';
 
 $user = new User();
 $verkooporder = new Verkooporder();

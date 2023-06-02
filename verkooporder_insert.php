@@ -20,8 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $verkooporder->setKlantId($_POST['klantId']);
         $verkooporder->setArtId($_POST['artId']);
         $verkooporder->setVerkOrdDatum($_POST['verkOrdDatum']);
-        $verkooporder->setVerkOrdStatus($_POST['verkOrdStatus']);
         $verkooporder->setVerkOrdBestAantal($_POST['verkOrdBestAantal']);
+        $verkooporder->setVerkOrdStatus($_POST['verkOrdStatus']);
 
         // Voeg het verkooporder toe aan de database
         $verkooporder->addVerkooporder();
@@ -61,12 +61,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <label for="verkOrdDatum">Verkooporder datum:</label>
         <input type="date" id="verkOrdDatum" name="verkOrdDatum" required>
         <br><br>
-        <label for="verkOrdStatus">Verkooporder status:</label>
-        <input type="text" id="verkOrdStatus" name="verkOrdStatus" required>
-        <br><br>
         <label for="verkOrdBestAantal">Verkooporder bestel aantal:</label>
         <input type="number" id="verkOrdBestAantal" name="verkOrdBestAantal" required>
         <br><br>
+        <label for="verkOrdStatus">Verkooporder status:</label>
+        <select name="verkOrdStatus" id="verkOrdStatus">
+            <option value="0">In afwachting</option>
+            <option value="1">In behandeling</option>
+            <option value="2">Afgerond</option>
+        </select><br><br>
         <input type="submit" name="submit" value="Toevoegen">
     </form>
     <a href="index.php" class="back-btn">Terug naar hoofdmenu</a>

@@ -20,7 +20,7 @@
             Artikel beheren
             <ul>
                 <li><a href="artikel_toevoegen.php">Artikel toevoegen</a></li>
-                <li><a href="artikel_zien.php">Artikel zien</a></li>
+                <li><a href="artikelen.php">Artikel zien</a></li>
                 <li><a href="artikel_updaten.php">Artikel updaten</a></li>
                 <li><a href="artikel_verwijderen.php">Artikel verwijderen</a></li>
             </ul>

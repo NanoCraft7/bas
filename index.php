@@ -11,7 +11,7 @@
             Klant beheren
             <ul>
                 <li><a href="klant_insert.php">Klant toevoegen</a></li>
-                <li><a href="klant_zien.php">Klant zien</a></li>
+                <li><a href="klanten.php">Klant zien</a></li>
                 <li><a href="klant_updaten.php">Klant updaten</a></li>
                 <li><a href="klant_verwijderen.php">Klant verwijderen</a></li>
             </ul>
@@ -29,7 +29,7 @@
             Leveranciers beheren
             <ul>
                 <li><a href="leverancier_toevoegen.php">Leverancier toevoegen</a></li>
-                <li><a href="leverancier_zien.php">Leverancier zien</a></li>
+                <li><a href="leveranciers.php">Leverancier zien</a></li>
                 <li><a href="leverancier_updaten.php">Leverancier updaten</a></li>
                 <li><a href="leverancier_verwijderen.php">Leverancier verwijderen</a></li>
             </ul>

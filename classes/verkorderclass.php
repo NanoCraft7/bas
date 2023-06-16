@@ -53,5 +53,19 @@ class Verkooporder
         $query = "SELECT * FROM verkooporders";
         return $this->db->fetchAll($query);
     }
+
+    public function updateVerkooporderStatus($verkOrdId, $verkOrdStatus)
+    {
+        $query = "UPDATE verkooporders SET verkOrdStatus = ? WHERE verkOrdId = ?";
+        $values = array($verkOrdStatus, $verkOrdId);
+        $this->db->execute($query, $values);
+    }
+
+    public function verwijderVerkooporder($verkOrdId)
+    {
+        $query = "DELETE FROM verkooporders WHERE verkOrdId = :verkOrdId";
+        $params = array(':verkOrdId' => $verkOrdId);
+        $this->db->execute($query, $params);
+    }
 }
 ?>

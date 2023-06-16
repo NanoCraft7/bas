@@ -2,6 +2,7 @@
 
 class User
 {
+    private $klantid;
     private $klantnaam;
     private $klantEmail;
     private $klantAdres;
@@ -70,5 +71,24 @@ class User
         $query = "SELECT * FROM artikelen";
         return $this->db->fetchAll($query);
     }
+
+    public function zoekKlantOpId($klantId)
+    {
+        $query = "SELECT * FROM klanten WHERE klantid = " . $klantId;
+        return $this->db->fetchAll($query);
+    }
+    
+    public function verwijderKlant($klantId)
+    {
+        $query = "DELETE FROM klanten WHERE klantid = " . $klantId;
+        $this->db->execute($query);
+    }
+
+    public function getLeveranciers()
+    {
+        $query = "SELECT * FROM leveranciers";
+        return $this->db->fetchAll($query);
+    }
+
 }
 ?>

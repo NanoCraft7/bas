@@ -6,6 +6,12 @@ require_once 'classes/verkorderclass.php';
 $user = new User();
 $verkooporder = new Verkooporder();
 
+// Verwijder een verkooporder als er een verkOrdId is opgegeven
+if (isset($_GET['verkOrdId'])) {
+    $verkOrdId = $_GET['verkOrdId'];
+    $verkooporder->verwijderVerkooporder($verkOrdId);
+}
+
 // Haal de lijst met verkooporders op
 $verkooporders = $verkooporder->getVerkooporders();
 
@@ -50,6 +56,7 @@ foreach ($verkooporders as &$order) {
             <th>Datum</th>
             <th>Status</th>
             <th>Bestel aantal</th>
+            <th>Actie</th>
         </tr>
     </thead>
     <tbody>
@@ -61,10 +68,22 @@ foreach ($verkooporders as &$order) {
                 <td><?php echo $verkooporder['verkOrdDatum']; ?></td>
                 <td><?php echo $verkooporder['verkOrdStatus']; ?></td>
                 <td><?php echo $verkooporder['verkOrdBestAantal']; ?></td>
+                <td>
+                    <form method="post" action="verkooporder_update.php">
+                        <input type="hidden" name="verkOrdId" value="<?php echo $verkooporder['verkOrdId']; ?>">
+                        <select name="verkOrdStatus">
+                            <option value="0" <?php echo ($verkooporder['verkOrdStatus'] == '0') ? 'selected' : ''; ?>>In behandeling</option>
+                            <option value="1" <?php echo ($verkooporder['verkOrdStatus'] == '1') ? 'selected' : ''; ?>>Verzonden</option>
+                            <option value="2" <?php echo ($verkooporder['verkOrdStatus'] == '2') ? 'selected' : ''; ?>>Geleverd</option>
+                        </select>
+                        <input type="submit" value="Bijwerken">
+                    </form>
+                    <a href="verkooporders.php?verkOrdId=<?php echo $verkooporder['verkOrdId']; ?>" onclick="return confirm('Weet je zeker dat je deze verkooporder wilt verwijderen?')">Verwijderen</a>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
-</table>
+    </table>
     <a href="index.php" class="back-btn">Terug naar hoofdmenu</a>
 </body>
 </html>

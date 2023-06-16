@@ -1,78 +1,78 @@
 <?php
+
 require_once 'classes/database.php';
-require_once 'classes/levclass.php';
+require_once 'classes/userclass.php';
 require_once 'classes/inkorderclass.php';
 
-$db = new Database();
-$lev = new Leverancier();
-$inkOrder = new Inkooporder();
+$user = new User();
+$inkooporder = new Inkooporder();
 
-// Verwerk het formulier voor het toevoegen van inkooporders
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Haal de ingevulde gegevens uit het formulier
-    $levId = $_POST['levId'];
-    $artId = $_POST['artId'];
-    $inkOrdDatum = $_POST['inkOrdDatum'];
-    $inkOrdBestAantal = $_POST['inkOrdBestAantal'];
-    $inkOrdStatus = $_POST['inkOrdStatus'];
+// Haal de lijst met leveranciers op
+$leveranciers = $user->getLeveranciers();
 
-    // Maak een nieuw InkoopOrder object aan
-    $inkoopOrder = new InkoopOrder();
+// Haal de lijst met artikelen op
+$artikelen = $user->getArtikelen();
 
-    // Roep de methode aan om een inkooporder toe te voegen
-    $result = $inkoopOrder->addInkoopOrder($levId, $artId, $inkOrdDatum, $inkOrdBestAantal, $inkOrdStatus);
+// Verwerk het formulier indien verzonden
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Controleer of de array-sleutels zijn ingesteld
+    if (isset($_POST['leverancierId'], $_POST['artId'], $_POST['inkOrdDatum'], $_POST['inkOrdStatus'], $_POST['inkOrdBestAantal'])) {
+        // Verkrijg en stel de gegevens in van het inkooporder formulier
+        $inkooporder->setLeverancierId($_POST['leverancierId']);
+        $inkooporder->setArtId($_POST['artId']);
+        $inkooporder->setInkOrdDatum($_POST['inkOrdDatum']);
+        $inkooporder->setInkOrdBestAantal($_POST['inkOrdBestAantal']);
+        $inkooporder->setInkOrdStatus($_POST['inkOrdStatus']);
 
-    // Controleer het resultaat en geef een melding weer
-    if ($result) {
-        echo 'Inkooporder succesvol toegevoegd.';
+        // Voeg het inkooporder toe aan de database
+        $inkooporder->addInkooporder();
+
+        // Geef een succesbericht weer
+        echo "Inkooporder succesvol toegevoegd!";
     } else {
-        echo 'Er is een fout opgetreden bij het toevoegen van de inkooporder.';
+        echo "Niet alle vereiste velden zijn ingevuld!";
     }
 }
 
-
-$leveranciers = $lev->getLeveranciers();
-$artikelen = $db->fetchAll("SELECT * FROM artikelen");
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Inkooporder toevoegen</title>
+    <title>Inkooporder aanmaken</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
 </head>
 <body>
-    <h1>Inkooporder toevoegen</h1>
-    <form method="POST" action="">
-        <label for="levId">Leverancier:</label>
-        <select name="levId" id="levId">
-            <?php foreach ($leveranciers as $leverancier): ?>
-                <option value="<?php echo $leverancier['levid']; ?>"><?php echo $leverancier['levnaam']; ?></option>
-            <?php endforeach; ?>
-        </select><br><br>
-
+    <h2>Inkooporder aanmaken</h2>
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <label for="leverancierId">Leverancier:</label>
+        <select name="leverancierId">
+            <option>Doritos Co.</option>
+            <?php foreach ($leveranciers as $leverancier) { ?>
+                <option value="<?php echo $leverancier['levId']; ?>"><?php echo $leverancier['levNaam']; ?></option>
+            <?php } ?>
+        </select>
+        <br><br>
         <label for="artId">Artikel:</label>
         <select name="artId" id="artId">
-            <?php foreach ($artikelen as $artikel): ?>
+            <?php foreach ($artikelen as $artikel) : ?>
                 <option value="<?php echo $artikel['artId']; ?>"><?php echo $artikel['artOmschrijving']; ?></option>
             <?php endforeach; ?>
-        </select><br><br>
-
-        <label for="inkOrdDatum">Datum:</label>
-        <input type="date" name="inkOrdDatum" id="inkOrdDatum" required><br><br>
-
-        <label for="inkOrdBestAantal">Aantal:</label>
-        <input type="number" name="inkOrdBestAantal" id="inkOrdBestAantal" required><br><br>
-
+        </select>
+        <br><br>
+        <label for="inkOrdDatum">Inkooporder datum:</label>
+        <input type="date" id="inkOrdDatum" name="inkOrdDatum" required>
+        <br><br>
+        <label for="inkOrdBestAantal">Inkooporder bestel aantal:</label>
+        <input type="number" id="inkOrdBestAantal" name="inkOrdBestAantal" required>
+        <br><br>
         <label for="inkOrdStatus">Inkooporder status:</label>
         <select name="inkOrdStatus" id="inkOrdStatus">
             <option value="0">In afwachting</option>
             <option value="1">In behandeling</option>
             <option value="2">Afgerond</option>
         </select><br><br>
-
-
-        <input type="submit" value="Toevoegen">
+        <input type="submit" name="submit" value="Toevoegen">
     </form>
     <a href="index.php" class="back-btn">Terug naar hoofdmenu</a>
 </body>

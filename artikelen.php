@@ -37,6 +37,7 @@ $artikelen = $artikel->getArtikelen();
                 <th>Locatie</th>
                 <th>Leverancier</th>
                 <th>Actie</th>
+                <th>Bijwerken</th> <!-- Nieuwe kolom -->
             </tr>
         </thead>
         <tbody>
@@ -53,6 +54,9 @@ $artikelen = $artikel->getArtikelen();
                     <td><?php echo $artikel['levId']; ?></td>
                     <td>
                         <a href="artikelen.php?artikelId=<?php echo $artikel['artId']; ?>" class="delete-btn">Verwijderen</a>
+                    </td>
+                    <td>
+                        <a href="artikel_update.php?artikelId=<?php echo $artikel['artId']; ?>" class="update-btn">Bijwerken</a> <!-- Nieuwe cel met de knop om naar de updatepagina te gaan -->
                     </td>
                 </tr>
             <?php endforeach; ?>

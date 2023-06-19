@@ -90,5 +90,12 @@ class User
         return $this->db->fetchAll($query);
     }
 
+    public function updateKlant($klantId, $updatedUser)
+    {
+        $query = "UPDATE klanten SET klantnaam = ?, klantEmail = ?, klantAdres = ?, klantPostcode = ?, klantWoonplaats = ? WHERE klantid = ?";
+        $this->db->execute($query, array($updatedUser->klantnaam, $updatedUser->klantEmail, $updatedUser->klantAdres, $updatedUser->klantPostcode, $updatedUser->klantWoonplaats, $klantId));
+    }
+
+
 }
 ?>

@@ -54,6 +54,13 @@ class Verkooporder
         return $this->db->fetchAll($query);
     }
 
+    public function getVerkooporder($verkOrdId)
+    {
+        $query = "SELECT * FROM verkooporders WHERE verkOrdId = ?";
+        $values = array($verkOrdId);
+        return $this->db->fetch($query, $values);
+    }
+
     public function updateVerkooporderStatus($verkOrdId, $verkOrdStatus)
     {
         $query = "UPDATE verkooporders SET verkOrdStatus = ? WHERE verkOrdId = ?";
@@ -66,6 +73,20 @@ class Verkooporder
         $query = "DELETE FROM verkooporders WHERE verkOrdId = :verkOrdId";
         $params = array(':verkOrdId' => $verkOrdId);
         $this->db->execute($query, $params);
+    }
+
+    public function getVerkooporderById($verkOrdId)
+    {
+        $query = "SELECT * FROM verkooporders WHERE verkOrdId = ?";
+        $values = array($verkOrdId);
+        return $this->db->fetch($query, $values);
+    }
+
+    public function updateVerkooporder($verkOrdId, $klantId, $artId, $verkOrdDatum, $verkOrdStatus, $verkOrdBestAantal)
+    {
+        $query = "UPDATE verkooporders SET klantId = ?, artId = ?, verkOrdDatum = ?, verkOrdStatus = ?, verkOrdBestAantal = ? WHERE verkOrdId = ?";
+        $values = array($klantId, $artId, $verkOrdDatum, $verkOrdStatus, $verkOrdBestAantal, $verkOrdId);
+        $this->db->execute($query, $values);
     }
 }
 ?>

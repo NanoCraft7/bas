@@ -134,7 +134,7 @@ table tr:hover {
   background-color: rgba(255, 255, 0, 0.2);
 }
 
-a {
+a{
   text-decoration: none;
   color: #333;
   padding: 5px;
@@ -146,7 +146,7 @@ a {
   transition: background-color 0.3s ease;
 }
 
-a:hover {
+a:hover{
   background-color: #ddd;
   transition: background-color 0.3s ease;
 }

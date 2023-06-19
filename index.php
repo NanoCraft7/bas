@@ -12,8 +12,6 @@
             <ul>
                 <li><a href="klant_insert.php">Klant toevoegen</a></li>
                 <li><a href="klanten.php">Klant zien</a></li>
-                <li><a href="klant_updaten.php">Klant updaten</a></li>
-                <li><a href="klant_verwijderen.php">Klant verwijderen</a></li>
             </ul>
         </li>
         <li class="main">
@@ -21,8 +19,6 @@
             <ul>
                 <li><a href="artikel_toevoegen.php">Artikel toevoegen</a></li>
                 <li><a href="artikelen.php">Artikel zien</a></li>
-                <li><a href="artikel_updaten.php">Artikel updaten</a></li>
-                <li><a href="artikel_verwijderen.php">Artikel verwijderen</a></li>
             </ul>
         </li>
         <li class="main">
@@ -30,8 +26,6 @@
             <ul>
                 <li><a href="leverancier_toevoegen.php">Leverancier toevoegen</a></li>
                 <li><a href="leveranciers.php">Leverancier zien</a></li>
-                <li><a href="leverancier_updaten.php">Leverancier updaten</a></li>
-                <li><a href="leverancier_verwijderen.php">Leverancier verwijderen</a></li>
             </ul>
         </li>
     </ul><br>
@@ -41,8 +35,6 @@
             <ul>
                 <li><a href="verkooporder_insert.php">Verkoop aanmaken</a></li>
                 <li><a href="verkooporders.php">Verkoop zien</a></li>
-                <li><a href="verkooporder_updaten.php">Verkoop updaten</a></li>
-                <li><a href="verkooporder_verwijderen.php">Verkoop verwijderen</a></li>
             </ul>
         </li>
         <li class="main">
@@ -50,8 +42,6 @@
             <ul>
                 <li><a href="inkooporder_insert.php">Inkoop aanmaken</a></li>
                 <li><a href="inkooporders.php">Inkoop zien</a></li>
-                <li><a href="inkooporder_updaten.php">Inkoop updaten</a></li>
-                <li><a href="inkooporder_verwijderen.php">Inkoop verwijderen</a></li>
             </ul>
         </li>
     </ul>

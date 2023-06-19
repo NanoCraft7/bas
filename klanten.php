@@ -23,11 +23,13 @@
     $zoekresultaten = array();
 
     // Verwerken van het zoekformulier
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $zoekKlantId = $_POST['zoekKlantId'];
+    if (isset($_POST['Zoeken'])) {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $zoekKlantId = $_POST['zoekKlantId'];
 
-        // Zoek de klant op basis van klant-ID
-        $zoekresultaten = $user->zoekKlantOpId($zoekKlantId);
+            // Zoek de klant op basis van klant-ID
+            $zoekresultaten = $user->zoekKlantOpId($zoekKlantId);
+        }
     }
 
     // Verwerken van het verwijderformulier
@@ -71,6 +73,7 @@
                             <form method="post" action="">
                                 <input type="hidden" name="verwijderKlantId" value="<?php echo $klant['klantid']; ?>">
                                 <input type="submit" value="Verwijderen">
+                                <a href="klant_update.php?id=<?php echo $klant['klantid']; ?>">Bijwerken</a>
                             </form>
                         </td>
                     </tr>
@@ -83,7 +86,7 @@
     <form method="post" action="klanten.php">
         <label for="zoekKlantId">Klant ID:</label>
         <input type="text" id="zoekKlantId" name="zoekKlantId" required>
-        <input type="submit" value="Zoeken">
+        <input type="submit" value="Zoeken" name="Zoeken">
     </form>
 
     <?php if (!empty($zoekresultaten)) : ?>

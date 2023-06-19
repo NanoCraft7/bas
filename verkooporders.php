@@ -6,6 +6,13 @@ require_once 'classes/verkorderclass.php';
 $user = new User();
 $verkooporder = new Verkooporder();
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $verkOrdId = $_POST['verkOrdId'];
+    $verkOrdStatus = $_POST['verkOrdStatus'];
+
+    $verkooporder->updateVerkooporderStatus($verkOrdId, $verkOrdStatus);
+}
+
 // Verwijder een verkooporder als er een verkOrdId is opgegeven
 if (isset($_GET['verkOrdId'])) {
     $verkOrdId = $_GET['verkOrdId'];
@@ -69,7 +76,7 @@ foreach ($verkooporders as &$order) {
                 <td><?php echo $verkooporder['verkOrdStatus']; ?></td>
                 <td><?php echo $verkooporder['verkOrdBestAantal']; ?></td>
                 <td>
-                    <form method="post" action="verkooporder_update.php">
+                    <form method="post" action="">
                         <input type="hidden" name="verkOrdId" value="<?php echo $verkooporder['verkOrdId']; ?>">
                         <select name="verkOrdStatus">
                             <option value="0" <?php echo ($verkooporder['verkOrdStatus'] == '0') ? 'selected' : ''; ?>>In behandeling</option>
@@ -78,6 +85,7 @@ foreach ($verkooporders as &$order) {
                         </select>
                         <input type="submit" value="Bijwerken">
                     </form>
+                    <a href="verkooporder_update.php?verkOrdId=<?php echo $verkooporder['verkOrdId']; ?>">Bijwerken</a>
                     <a href="verkooporders.php?verkOrdId=<?php echo $verkooporder['verkOrdId']; ?>" onclick="return confirm('Weet je zeker dat je deze verkooporder wilt verwijderen?')">Verwijderen</a>
                 </td>
             </tr>

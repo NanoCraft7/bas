@@ -38,7 +38,7 @@ class Database
         } catch (PDOException $e) {
             die("Query execution failed: " . $e->getMessage());
         }
-    }
+    }    
 
     public function fetch($query, $params = array())
     {
@@ -48,6 +48,6 @@ class Database
         } catch (PDOException $e) {
             die("Query execution failed: " . $e->getMessage());
         }
-    }
+    }    
 }
 ?>

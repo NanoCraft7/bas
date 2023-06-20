@@ -66,12 +66,6 @@ class User
         return $this->db->fetchAll($query);
     }
 
-    public function getArtikelen()
-    {
-        $query = "SELECT * FROM artikelen";
-        return $this->db->fetchAll($query);
-    }
-
     public function zoekKlantOpId($klantId)
     {
         $query = "SELECT * FROM klanten WHERE klantid = " . $klantId;
@@ -80,14 +74,23 @@ class User
     
     public function verwijderKlant($klantId)
     {
-        $query = "DELETE FROM klanten WHERE klantid = " . $klantId;
-        $this->db->execute($query);
-    }
+        $query = "DELETE FROM klanten WHERE klantid = :klantid";
+        $params = array(':klantid' => $klantId);
+        $this->db->execute($query, $params);
+    }    
 
     public function getLeveranciers()
     {
         $query = "SELECT * FROM leveranciers";
-        return $this->db->fetchAll($query);
+        $result = $this->db->query($query);
+        return $result;
+    }
+
+    public function getArtikelen()
+    {
+        $query = "SELECT * FROM artikelen";
+        $result = $this->db->query($query);
+        return $result;
     }
 
     public function updateKlant($klantId, $updatedUser)

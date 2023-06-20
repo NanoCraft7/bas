@@ -82,8 +82,7 @@ class User
     public function getLeveranciers()
     {
         $query = "SELECT * FROM leveranciers";
-        $result = $this->db->query($query);
-        return $result;
+        return $this->db->fetchAll($query);
     }
 
     public function getArtikelen()

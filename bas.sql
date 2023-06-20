@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2023 at 11:26 AM
+-- Generation Time: Jun 20, 2023 at 08:51 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,9 +44,8 @@ CREATE TABLE `artikelen` (
 --
 
 INSERT INTO `artikelen` (`artId`, `artOmschrijving`, `artInkoop`, `artVerkoop`, `artVoorraad`, `artMinVoorraad`, `artMaxVoorraad`, `artLocatie`, `levId`) VALUES
-(16, 'NFT Pepe Bee', '99.99', '199.99', 10, 2, 20, 1, 1),
-(17, 'Viral Cat T-', '14.99', '29.99', 50, 5, 100, 2, 2),
-(18, 'Dank Meme Ho', '29.99', '59.99', 30, 10, 50, 3, 1);
+(16, 'NFT Pepe Bee', '99.99', '199.99', 10, 3, 20, 1, 1),
+(17, 'Viral Cat T-', '14.99', '29.99', 50, 5, 100, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -68,8 +67,8 @@ CREATE TABLE `inkooporders` (
 --
 
 INSERT INTO `inkooporders` (`inkOrdId`, `levId`, `artId`, `inkOrdDatum`, `inkOrdBestAantal`, `inkOrdStatus`) VALUES
-(9, 1, 1, '2023-01-05', 5, 1),
-(10, 2, 2, '2023-02-10', 10, 0);
+(9, 51, 16, '2023-01-05', 5, 1),
+(10, 52, 17, '2023-02-10', 10, 0);
 
 -- --------------------------------------------------------
 
@@ -93,9 +92,11 @@ CREATE TABLE `klanten` (
 INSERT INTO `klanten` (`klantid`, `klantnaam`, `klantEmail`, `klantAdres`, `klantPostcode`, `klantWoonplaats`) VALUES
 (10, 'Meme Lover', 'memelover@gmail.com', 'Meme Street 10', '1234 A', 'Amsterdam'),
 (11, 'CrazyCatLady', 'catlady@hotmail.com', 'Troll Avenue 20', '5678 C', 'Rotterdam'),
-(12, 'Bas', 'bas.bassen@basser.nl', 'basstraat', '1234AB', 'bas'),
-(13, 'basser', 'bas.bassen@basser.nl', 'basstraat', '1234AB', 'bass'),
-(14, 'ewfiu', 'iuweef@gmail.com', 'iujekrnf', '7898jj', 'ierjgnf');
+(14, 'yoyo', 'iuweef@gmail.com', 'iujekrnf', '7898jj', 'ierjgnf'),
+(15, 'aaa', 'aaa@gmail.com', 'aaa', 'aaaa33', 'aaaa'),
+(16, 'yes', 'yes@gmail.com', 'yes', '5555uu', 'yes'),
+(17, 'Hallo', 'hallo@gmail.com', 'hallostraat', '1234AB', 'ergens in rotterdam'),
+(18, 'bbbbbbb', 'bbbbbb@gmail.com', 'haosdjflkh', '1234AB', 'niet');
 
 -- --------------------------------------------------------
 
@@ -118,8 +119,25 @@ CREATE TABLE `leveranciers` (
 --
 
 INSERT INTO `leveranciers` (`levid`, `levnaam`, `levcontact`, `levEmail`, `levAdres`, `levPostcode`, `levWoonplaats`) VALUES
-(9, 'Meme Merch', 'MemeMaster', 'meme@merch.com', 'Hoofdstraat 1', '1234 A', 'Amsterdam'),
-(10, 'Crazy Cat Co.', 'CatLover', 'cat@crazycatco.com', 'Keizersgracht 100', '5678 C', 'Rotterdam');
+(51, 'Doritos Co.', 'John Doritos', 'john@doritos.com', 'MLG Street 360', '1234 A', 'Gamer City'),
+(52, 'Mountain Dew In', 'Dewy Dew', 'dewy@dew.com', 'Dorito Avenue 420', '5678 C', 'Memeville'),
+(53, 'Quickscope Ente', 'Barry Quickscope', 'barry@quickscope.com', 'MLG Boulevard 720', '9012 E', 'Pro Town'),
+(54, '420BlazeIt Corp', 'Blaze McBlazer', 'blaze@420blazeit.com', 'MLG Lane 69', '3456 G', 'Smoke City'),
+(55, 'Sunglasses Empo', 'Shady Shades', 'shady@sunglasses.com', 'MLG Plaza 360', '7890 I', 'Swagger Town'),
+(56, 'Epic Gaming Gea', 'Max Gamer', 'max@gaminggear.com', 'MLG Road 42', '2345 K', 'E-Sports City'),
+(57, 'NoScope Optics', 'Lenny NoScope', 'lenny@noscope.com', 'MLG Street 9001', '6789 M', 'Snipeville'),
+(58, 'Sonic MLG Burge', 'Sonic Swag', 'sonic@mlgburgers.com', 'MLG Boulevard 1337', '0123 O', 'Munch City'),
+(59, 'PewPew Electron', 'Pete PewPew', 'pete@pewpewelectronics.com', 'MLG Avenue 360', '4567 Q', 'Gaming District'),
+(60, 'Gamer Fuel Supp', 'Frank Fuel', 'frank@gamerfuel.com', 'MLG Lane 720', '8901 S', 'Boost City'),
+(61, 'Trickshot Tech', 'Trevor Trickshot', 'trevor@trickshottech.com', 'MLG Road 360', '2345 U', 'Swag Town'),
+(62, 'Dank Meme Merch', 'Dan Dank', 'dan@dankmememerch.com', 'MLG Street 420', '6789 W', 'Meme City'),
+(63, 'Gaming Console ', 'Gary Console', 'gary@consoleempire.com', 'MLG Boulevard 69', '0123 Y', 'Gameville'),
+(64, 'Smoke Grenade S', 'Samantha Smoke', 'samantha@smokegrenade.com', 'MLG Plaza 9001', '4567 A', 'Fog City'),
+(66, 'Swag Merchandis', 'Sally Swag', 'sally@swagmerch.com', 'MLG Lane 360', '2345 E', 'Swagger City'),
+(67, 'Dorito Dust Co.', 'Dusty Dorito', 'dusty@doritodust.com', 'MLG Road 720', '6789 G', 'Flavor Town'),
+(68, 'MLG Supply Stor', 'Marty MLG', 'marty@mlgsupply.com', 'MLG Street 360', '0123 I', 'Pro City'),
+(69, 'MemeMaster Acce', 'Manny MemeMaster', 'manny@mememaster.com', 'MLG Boulevard 420', '4567 K', 'Meme District'),
+(70, 'Quick Revive En', 'Quincy Revive', 'quincy@quickrevive.com', 'MLG Plaza 69', '8901 M', 'Energy City');
 
 -- --------------------------------------------------------
 
@@ -141,8 +159,13 @@ CREATE TABLE `verkooporders` (
 --
 
 INSERT INTO `verkooporders` (`verkOrdId`, `klantId`, `artId`, `verkOrdDatum`, `verkOrdBestAantal`, `verkOrdStatus`) VALUES
-(9, 1, 1, '2022-12-20', 2, 1),
-(10, 2, 2, '2023-02-15', 3, 2);
+(12, 14, 16, '2023-06-01', 50, 2),
+(13, 16, 18, '2023-06-15', 235, 1),
+(14, 12, 17, '2023-06-12', 88, 0),
+(16, 10, 16, '2023-06-23', 79, 2),
+(17, 10, 16, '2023-06-23', 11, 0),
+(18, 18, 17, '2023-06-15', 686, 0),
+(19, 10, 16, '0000-00-00', 2147483647, 0);
 
 --
 -- Indexes for dumped tables
@@ -197,49 +220,25 @@ ALTER TABLE `artikelen`
 -- AUTO_INCREMENT for table `inkooporders`
 --
 ALTER TABLE `inkooporders`
-  MODIFY `inkOrdId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `inkOrdId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `klanten`
 --
 ALTER TABLE `klanten`
-  MODIFY `klantid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `klantid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `leveranciers`
 --
 ALTER TABLE `leveranciers`
-  MODIFY `levid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `levid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `verkooporders`
 --
 ALTER TABLE `verkooporders`
-  MODIFY `verkOrdId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `artikelen`
---
-ALTER TABLE `artikelen`
-  ADD CONSTRAINT `artikelen_ibfk_1` FOREIGN KEY (`levId`) REFERENCES `leveranciers` (`levid`);
-
---
--- Constraints for table `inkooporders`
---
-ALTER TABLE `inkooporders`
-  ADD CONSTRAINT `inkooporders_ibfk_1` FOREIGN KEY (`levId`) REFERENCES `leveranciers` (`levid`),
-  ADD CONSTRAINT `inkooporders_ibfk_2` FOREIGN KEY (`artId`) REFERENCES `artikelen` (`artId`);
-
---
--- Constraints for table `verkooporders`
---
-ALTER TABLE `verkooporders`
-  ADD CONSTRAINT `verkooporders_ibfk_1` FOREIGN KEY (`klantId`) REFERENCES `klanten` (`klantid`),
-  ADD CONSTRAINT `verkooporders_ibfk_2` FOREIGN KEY (`artId`) REFERENCES `artikelen` (`artId`);
+  MODIFY `verkOrdId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

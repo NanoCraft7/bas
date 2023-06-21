@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Klanten</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+    <style>
+        .scrollable-table {
+            max-height: 600px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+
 <?php
 
 require_once 'classes/artikel.php';
@@ -24,6 +38,7 @@ $artikelen = $artikel->getArtikelen();
     <h2>Artikelen inzien</h2>
 
     <h3>Artikelen</h3>
+    <div class="scrollable-table">
     <table>
         <thead>
             <tr>
@@ -62,6 +77,7 @@ $artikelen = $artikel->getArtikelen();
             <?php endforeach; ?>
         </tbody>
     </table>
+    </div>
     <a href="index.php" class="back-btn">Terug naar hoofdmenu</a>
 </body>
 </html>

@@ -82,14 +82,14 @@ class User
     public function getLeveranciers()
     {
         $query = "SELECT * FROM leveranciers";
-        return $this->db->fetchAll($query);
+        $result = $this->db->query($query);
+        return $result;
     }
 
     public function getArtikelen()
     {
         $query = "SELECT * FROM artikelen";
-        $result = $this->db->query($query);
-        return $result;
+        return $this->db->fetchAll($query);
     }
 
     public function updateKlant($klantId, $updatedUser)
